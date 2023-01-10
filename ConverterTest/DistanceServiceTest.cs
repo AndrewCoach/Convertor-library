@@ -31,5 +31,12 @@ namespace ConverterTest
             Assert.AreEqual(true, distanceService.CanConvert("meter", "foot"));
             Assert.AreEqual(false, distanceService.CanConvert("meter", "meter"));
         }
+
+        [Test]
+        public void PrefixesTest()
+        {
+            Assert.AreEqual($"0,015 foot", distanceService.Convert("5 millimeter", "foot"));
+            Assert.AreEqual($"15000 foot", distanceService.Convert("5 kilometer", "foot"));
+        }
     }
 }

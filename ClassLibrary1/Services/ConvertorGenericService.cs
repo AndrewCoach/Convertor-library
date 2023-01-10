@@ -13,6 +13,7 @@ namespace ConvertorLibs.Services
     {
 
         public List<Conversion> Conversions = new List<Conversion>();
+        private PrefixService prefixService = new PrefixService();
 
         public bool CanConvert(string input1, string input2)
         {
@@ -42,19 +43,39 @@ namespace ConvertorLibs.Services
         {
             try
             {
+                // Parse the count and text from the first parameter
                 var count = int.Parse(Regex.Match(from, @"\d+").Value); // get just the number
                 var onlyText = Regex.Replace(from, @"[\d-] ", string.Empty); // get just text
+
+                // Get prefixes for the units, if they contain them
+                int prefix = 0;
+                int postfix = 0;
+                foreach (var pair in prefixService.Prefixes)
+                {
+                    if (onlyText.StartsWith(pair.Key))
+                    {
+                        // remove prefix form the text + initialize the Power number
+                        prefix = pair.Value;
+                        onlyText = onlyText.Replace(pair.Key, "");
+                    }
+                        
+                    if (to.StartsWith(pair.Key))
+                    {
+                        postfix = pair.Value;
+                        to = to.Replace(pair.Key, "");
+                    }
+                }
 
                 var conversionObj = canConvert(onlyText, to);
                 if (conversionObj != null)
                 {
-                    return conversionObj.Convert(count) + $" {to}";
+                    return conversionObj.Convert(count, prefix, postfix) + $" {to}";
                 }
                 // Inverse convert test
                 var inverseConversionObj = canConvert(to, onlyText);
                 if (inverseConversionObj != null)
                 {
-                    return inverseConversionObj.ConvertInverse(count) + $" {to}"; ;
+                    return inverseConversionObj.ConvertInverse(count, prefix, postfix) + $" {to}"; ;
                 }
                 return $"No suitable conversion was found for inputs {from} and {to}";
             }

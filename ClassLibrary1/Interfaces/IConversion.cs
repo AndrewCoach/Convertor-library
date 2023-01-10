@@ -9,8 +9,8 @@ namespace ConvertorLibs.Interfaces
     public interface IConversion
     {
 
-        string Convert(int amount);
+        string Convert(int amount, int prefix, int postfix);
 
-        string ConvertInverse(int amount);
+        string ConvertInverse(int amount, int prefix, int postfix);
     }
 }
