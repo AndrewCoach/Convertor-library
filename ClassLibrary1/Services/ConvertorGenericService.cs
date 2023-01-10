@@ -11,8 +11,15 @@ namespace ConvertorLibs.Services
 {
     public abstract class ConvertorGenericService : IConvertorGenericService
     {
+
         public List<Conversion> Conversions = new List<Conversion>();
-        private Conversion? CanConvert(string input1, string input2)
+
+        public bool CanConvert(string input1, string input2)
+        {
+            return canConvert(input1, input2) != null;
+        }
+
+        private Conversion? canConvert(string input1, string input2)
         {
             foreach (var conversion in Conversions)
             {
@@ -38,13 +45,13 @@ namespace ConvertorLibs.Services
                 var count = int.Parse(Regex.Match(from, @"\d+").Value); // get just the number
                 var onlyText = Regex.Replace(from, @"[\d-] ", string.Empty); // get just text
 
-                var conversionObj = CanConvert(onlyText, to);
+                var conversionObj = canConvert(onlyText, to);
                 if (conversionObj != null)
                 {
                     return conversionObj.Convert(count) + $" {to}";
                 }
                 // Inverse convert test
-                var inverseConversionObj = CanConvert(to, from);
+                var inverseConversionObj = canConvert(to, onlyText);
                 if (inverseConversionObj != null)
                 {
                     return inverseConversionObj.ConvertInverse(count) + $" {to}"; ;

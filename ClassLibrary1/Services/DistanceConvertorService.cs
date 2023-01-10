@@ -16,6 +16,5 @@ namespace ConvertorLibs.Services
         {
             Conversions.Add(new ConversionObjects.Conversion { Coefficient = 3, FromType = "meter,m,mtr", ToType = "foot,feet,ft"});
         }
-
     }
 }
