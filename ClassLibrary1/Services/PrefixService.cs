@@ -15,6 +15,7 @@ namespace ConvertorLibs.Services
 
         public PrefixService()
         {
+            Prefixes.Add("centi", -2);
             Prefixes.Add("milli", -3);
             Prefixes.Add("micro", -6);
             Prefixes.Add("nano", -9);
