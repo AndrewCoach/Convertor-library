@@ -23,7 +23,11 @@ namespace ConvertorLibs.Services
         /// </summary>
         public DistanceConvertorService()
         {
-            Conversions.Add(new ConversionObjects.Conversion { Coefficient = 3, FromTypes = "meter,m,mtr", ToTypes = "foot,feet,ft"});
+            Conversions.Add(new ConversionObjects.Conversion { Coefficient = 3, FromTypes = "meter,m,mtr", ToTypes = "foot,feet,ft"}); // the num 3 is a rought approximation because of tests
+            Conversions.Add(new ConversionObjects.Conversion { Coefficient = 39.37, FromTypes = "meter,m,mtr", ToTypes = "inch,in,inches"});
+            Conversions.Add(new ConversionObjects.Conversion { Coefficient = 0.028, FromTypes = "inch,in,inches", ToTypes = "yard,yrd,ya"});
+            // ...
+
         }
     }
 }

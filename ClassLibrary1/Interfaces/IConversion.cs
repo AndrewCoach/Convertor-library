@@ -11,6 +11,11 @@ namespace ConvertorLibs.Interfaces
     /// common defined prefixes such as "milli" "micro" and so on.</summary>
     public interface IConversion
     {
+        /// The comma delimited string of possible formats of source unit without prefix, different types based on derived classes
+        public string FromTypes { get; set; }
+
+        /// The comma delimited string of possible formats of target unit without prefix, different types based on derived classes
+        public string ToTypes { get; set; }
 
         /// <summary>Converts the specified amount of units into different units with prefixes.</summary>
         /// <param name="amount">The amount.</param>

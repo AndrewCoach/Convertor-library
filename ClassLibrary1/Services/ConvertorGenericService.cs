@@ -16,7 +16,7 @@ namespace ConvertorLibs.Services
 
         /// <summary>The list containing all defined conversions. 
         /// These should be defined in a constructor of an inheriting class.</summary>
-        public List<Conversion> Conversions = new List<Conversion>();
+        public List<IConversion> Conversions = new List<IConversion>();
 
         /// <summary>The private prefix service
         /// to parse prefixes into Powers</summary>
@@ -28,7 +28,7 @@ namespace ConvertorLibs.Services
             return canConvert(input1, input2) != null;
         }
 
-        private Conversion? canConvert(string input1, string input2)
+        private IConversion? canConvert(string input1, string input2)
         {
             foreach (var conversion in Conversions)
             {
