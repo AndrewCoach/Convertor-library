@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConvertorLibs.Services
 {
+    /// <summary>A Simple service to wrap a dictionary of predefined prefixes with their respective powers</summary>
     public class PrefixService
     {
+        /// <summary>The Dictionary containing the prefixes.</summary>
+        /// <value>The prefixes Dictionary</value>
         public Dictionary<string, int> Prefixes { get; set; } = new Dictionary<string, int>();
 
         public PrefixService()
