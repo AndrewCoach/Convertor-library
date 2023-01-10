@@ -8,8 +8,17 @@ namespace ConvertorLibs.Interfaces
 {
     internal interface IConversion
     {
-        (string, string) GetTypes();
+        returnTypes GetTypes();
 
-        string Convert(string from, string to);
+        string Convert(int amount);
+
+        string ConvertInverse(int amount);
+    }
+
+    public class returnTypes
+    {
+        public string FromType { get; set; }
+
+        public string ToType { get; set; }
     }
 }
