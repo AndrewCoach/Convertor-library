@@ -1,8 +1,10 @@
-﻿using ConvertorLibs.Interfaces;
+﻿using ConvertorLibs.ConversionObjects;
+using ConvertorLibs.Interfaces;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,17 +14,8 @@ namespace ConvertorLibs.Services
     {
         public DistanceConvertorService()
         {
-            _conversions.Add()
+            Conversions.Add(new ConversionObjects.Conversion { Coefficient = 3.28, FromType = "meter,m", ToType = "foot,feet,ft"});
         }
 
-        public override bool CanConvert(string input1, string input2)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string Convert(string from, string to)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

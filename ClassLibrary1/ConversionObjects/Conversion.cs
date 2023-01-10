@@ -9,37 +9,25 @@ namespace ConvertorLibs.ConversionObjects
 {
     public class Conversion : IConversion
     {
-        private readonly string _fromType;
-        private readonly string _toType;
-        private readonly double _coefficient;
-
-        public Conversion(string fromType, string toType, double coefficient)
-        {
-            _fromType = fromType;
-            _toType = toType;
-            _coefficient = coefficient;
-        }
+        public  string FromType { get; set; }
+        public  string ToType { get; set; }
+        public  double Coefficient { get; set; }
 
         public string Convert(int amount)
         {
-           return $"{amount * _coefficient} {_toType}";
+           return $"{amount * Coefficient} {ToType}";
         }
 
         public string ConvertInverse(int amount)
         {
             try
             {
-                return $"{amount / _coefficient} {_toType}"; // Division by zero failsafe
+                return $"{amount / Coefficient} {ToType}"; // Division by zero failsafe
             }
             catch (DivideByZeroException ex)
             {
                 return ex.Message;
             }
-        }
-
-        public returnTypes GetTypes()
-        {
-            return new returnTypes { FromType = _fromType, ToType = _toType };
         }
     }
 }
