@@ -14,7 +14,7 @@ namespace ConvertorLibs.Services
     {
         public DistanceConvertorService()
         {
-            Conversions.Add(new ConversionObjects.Conversion { Coefficient = 3.28, FromType = "meter,m", ToType = "foot,feet,ft"});
+            Conversions.Add(new ConversionObjects.Conversion { Coefficient = 3, FromType = "meter,m,mtr", ToType = "foot,feet,ft"});
         }
 
     }

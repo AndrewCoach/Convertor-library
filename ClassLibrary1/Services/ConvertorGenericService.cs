@@ -24,7 +24,7 @@ namespace ConvertorLibs.Services
                 bool toFound = false;
                 // Get all standardized formats for the source
                 var toNameList = conversion.ToType.ToLower().Split(',').ToList();
-                if (toNameList.Contains(input1)) toFound = true;
+                if (toNameList.Contains(input2)) toFound = true;
 
                 // Return if both found in the same cycle
                 if (fromFound && toFound) return conversion;
@@ -35,17 +35,19 @@ namespace ConvertorLibs.Services
         {
             try
             {
-                var count = int.Parse(Regex.Match(from, @"\d+").Value);
-                var conversionObj = CanConvert(from, to);
+                var count = int.Parse(Regex.Match(from, @"\d+").Value); // get just the number
+                var onlyText = Regex.Replace(from, @"[\d-] ", string.Empty); // get just text
+
+                var conversionObj = CanConvert(onlyText, to);
                 if (conversionObj != null)
                 {
-                    return conversionObj.Convert(count);
+                    return conversionObj.Convert(count) + $" {to}";
                 }
                 // Inverse convert test
                 var inverseConversionObj = CanConvert(to, from);
                 if (inverseConversionObj != null)
                 {
-                    return inverseConversionObj.ConvertInverse(count);
+                    return inverseConversionObj.ConvertInverse(count) + $" {to}"; ;
                 }
                 return $"No suitable conversion was found for inputs {from} and {to}";
             }

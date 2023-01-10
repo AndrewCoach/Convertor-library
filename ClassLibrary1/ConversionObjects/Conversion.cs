@@ -15,14 +15,14 @@ namespace ConvertorLibs.ConversionObjects
 
         public string Convert(int amount)
         {
-           return $"{amount * Coefficient} {ToType}";
+           return $"{amount * Coefficient}";
         }
 
         public string ConvertInverse(int amount)
         {
             try
             {
-                return $"{amount / Coefficient} {ToType}"; // Division by zero failsafe
+                return $"{amount / Coefficient}"; // Division by zero failsafe
             }
             catch (DivideByZeroException ex)
             {

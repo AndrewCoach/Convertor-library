@@ -8,8 +8,6 @@ namespace ConvertorLibs.Interfaces
 {
     internal interface IConvertorGenericService
     {
-        bool CanConvert(string input1, string input2);
-
         string Convert(string from, string to);
     }
 }

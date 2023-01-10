@@ -13,9 +13,9 @@ namespace ConverterTest
         }
 
         [Test]
-        public void Test1()
+        public void MetersToInchesTest()
         {
-            Assert.AreEqual(distanceService.Convert("5 feet", "inches"), "100");
+            Assert.AreEqual($"{5 * 3} foot", distanceService.Convert("5 meter", "foot"));
         }
     }
 }
